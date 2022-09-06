@@ -1,0 +1,80 @@
+{
+  "kind": "collectionType",
+  "collectionName": "films",
+  "info": {
+    "singularName": "film",
+    "pluralName": "films",
+    "displayName": "film",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "minLength": 1,
+      "unique": true
+    },
+    "director": {
+      "type": "string",
+      "unique": false,
+      "minLength": 1,
+      "required": true,
+      "default": "Hayao Miyazaki"
+    },
+    "released": {
+      "type": "date",
+      "required": true
+    },
+    "duration": {
+      "type": "time",
+      "required": true
+    },
+    "cover": {
+      "type": "string",
+      "required": true,
+      "minLength": 1
+    },
+    "trailer": {
+      "type": "string"
+    },
+    "synopsis": {
+      "type": "string",
+      "required": true,
+      "minLength": 1
+    },
+    "image": {
+      "type": "string"
+    },
+    "image2": {
+      "type": "string"
+    },
+    "image3": {
+      "type": "string"
+    },
+    "image4": {
+      "type": "string"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::category.category",
+      "inversedBy": "films"
+    },
+    "audiences": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::audience.audience",
+      "inversedBy": "films"
+    },
+    "created_by_user": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::users-permissions.user",
+      "mappedBy": "films"
+    }
+  }
+}
